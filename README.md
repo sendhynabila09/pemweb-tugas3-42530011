@@ -4,7 +4,7 @@ Nama: Sendhy Nabila Pramesty
 NIM: 42530011
 Tema: A (Daftar Menu Kafe)
 
-Video penjelasan: [ISI LINK YOUTUBE PUBLIK DI SINI]
+Video penjelasan: [https://www.youtube.com/watch?v=vYWL2i1Lvk4]
 
 ## Cara Menjalankan
 
