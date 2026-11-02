@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= judul %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main class="container">
+    <h1><%= judul %></h1>
+
+    <form method="POST" action="<%= aksi %>">
+      <p>
+        <label>Nama Menu<br>
+          <input type="text" name="nama" value="<%= item.nama %>" required>
+        </label>
+      </p>
+      <p>
+        <label>Kategori<br>
+          <select name="kategori_id" required>
+            <option value="">-- Pilih --</option>
+            <% kategori.forEach(function(k) { %>
+              <option value="<%= k.id %>" <%= String(item.kategori_id) === String(k.id) ? 'selected' : '' %>><%= k.nama %></option>
+            <% }); %>
+          </select>
+        </label>
+      </p>
+      <p>
+        <label>Harga (Rp)<br>
+          <input type="number" name="harga" min="0" value="<%= item.harga %>" required>
+        </label>
+      </p>
+      <p>
+        <label>Deskripsi<br>
+          <textarea name="deskripsi" rows="3"><%= item.deskripsi %></textarea>
+        </label>
+      </p>
+      <p>
+        <label>Foto (contoh: /img/kopi-susu.jpg)<br>
+          <input type="text" name="foto" value="<%= item.foto %>">
+        </label>
+      </p>
+      <button type="submit">Simpan</button>
+      <a href="/">Batal</a>
+    </form>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

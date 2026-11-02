@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= judul %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main class="container">
+    <div class="detail">
+      <img src="<%= item.foto %>" alt="<%= item.nama %>">
+      <h1><%= item.nama %></h1>
+      <span class="badge" style="margin:0;"><%= item.kategori %></span>
+      <p><%= item.deskripsi %></p>
+      <p class="harga" style="margin:0;">Rp <%= item.harga.toLocaleString('id-ID') %></p>
+      <a href="/?kategori=<%= item.kategori %>" class="tombol-kembali">← Kembali</a>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

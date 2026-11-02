@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= judul %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main class="container">
+    <h1><%= judul %></h1>
+
+    <div class="filter">
+      <a href="/" class="<%= kategoriAktif === '' ? 'aktif' : '' %>">Semua</a>
+      <% daftarKategori.forEach(function(kat) { %>
+        <a href="/?kategori=<%= kat %>" class="<%= kategoriAktif === kat ? 'aktif' : '' %>"><%= kat %></a>
+      <% }); %>
+    </div>
+
+    <a href="/menu/tambah">+ Tambah Menu</a>
+
+    <% if (menu.length === 0) { %>
+      <p>Belum ada menu di kategori ini.</p>
+    <% } %>
+
+    <div class="grid">
+      <% menu.forEach(function(item) { %>
+        <div class="card">
+          <a href="/menu/<%= item.id %>">
+            <img src="<%= item.foto %>" alt="<%= item.nama %>">
+            <h3><%= item.nama %></h3>
+          </a>
+          <span class="badge"><%= item.kategori %></span>
+          <p class="harga">Rp <%= item.harga.toLocaleString('id-ID') %></p>
+
+          <a href="/menu/<%= item.id %>/edit">Edit</a>
+
+          <form method="POST" action="/menu/<%= item.id %>/hapus" onsubmit="return confirm('Hapus menu ini?')">
+            <button type="submit">Hapus</button>
+          </form>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
